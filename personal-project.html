@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Canvas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="wireframeCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('wireframeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions
+        canvas.width = 800;
+        canvas.height = 600;
+
+        // Colors
+        const boxColor = '#dcdcdc';
+        const borderColor = '#a0a0a0';
+
+        // Set drawing styles
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = borderColor;
+        ctx.fillStyle = boxColor;
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+
+        // --- Drawing the wireframe sections ---
+
+        // Draw Header
+        const headerHeight = 60;
+        ctx.strokeRect(10, 10, canvas.width - 20, headerHeight);
+        ctx.fillText("HEADER", canvas.width / 2, 45);
+
+        // Draw Main Content Area
+        const contentY = 20 + headerHeight;
+        const contentHeight = canvas.height - headerHeight - 30;
+        const mainNewsWidth = (canvas.width - 30) * 0.7; // 70% of available width
+        const sidebarWidth = (canvas.width - 30) * 0.3; // 30% of available width
+
+        // Draw Main News Section (Left)
+        ctx.strokeRect(10, contentY, mainNewsWidth, contentHeight);
+        ctx.fillText("MAIN NEWS SECTION", 10 + mainNewsWidth / 2, contentY + contentHeight / 2);
+
+        // Draw Sidebar (Right)
+        const sidebarX = 20 + mainNewsWidth;
+        ctx.strokeRect(sidebarX, contentY, sidebarWidth, contentHeight);
+        ctx.fillText("SIDEBAR", sidebarX + sidebarWidth / 2, contentY + 20);
+
+        // Draw components within Sidebar
+        const chartHeight = contentHeight * 0.4; // 40% of sidebar height
+        const formHeight = (contentHeight - chartHeight) / 2; // Split remaining space
+
+        // Draw Forex Chart Area
+        ctx.fillStyle = '#e0e0e0';
+        ctx.strokeRect(sidebarX + 5, contentY + 30, sidebarWidth - 10, chartHeight - 10);
+        ctx.fillText("FOREX CHART", sidebarX + sidebarWidth / 2, contentY + 30 + (chartHeight - 10) / 2);
+
+        // Draw Newsletter Form
+        const newsletterY = contentY + chartHeight + 10;
+        ctx.strokeRect(sidebarX + 5, newsletterY, sidebarWidth - 10, formHeight - 10);
+        ctx.fillText("NEWSLETTER FORM", sidebarX + sidebarWidth / 2, newsletterY + (formHeight - 10) / 2);
+
+        // Draw Lead Report Form
+        const leadFormY = newsletterY + formHeight;
+        ctx.strokeRect(sidebarX + 5, leadFormY, sidebarWidth - 10, formHeight - 10);
+        ctx.fillText("LEAD REPORT FORM", sidebarX + sidebarWidth / 2, leadFormY + (formHeight - 10) / 2);
+    </script>
+</body>
+</html>
