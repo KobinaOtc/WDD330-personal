@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Wireframe Canvas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="wireframeCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('wireframeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions for a mobile aspect ratio
+        canvas.width = 400;
+        canvas.height = 800;
+
+        // Colors
+        const boxColor = '#dcdcdc';
+        const borderColor = '#a0a0a0';
+
+        // Set drawing styles
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = borderColor;
+        ctx.fillStyle = boxColor;
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+
+        // --- Drawing the wireframe sections ---
+        let currentY = 10; // Starting Y position for the first element
+        const padding = 10;
+        const elementWidth = canvas.width - 20;
+
+        // Draw Header
+        const headerHeight = 50;
+        ctx.strokeRect(padding, currentY, elementWidth, headerHeight);
+        ctx.fillText("HEADER", canvas.width / 2, currentY + headerHeight / 2);
+        currentY += headerHeight + padding;
+
+        // Draw Main News Section
+        const newsHeight = 300;
+        ctx.strokeRect(padding, currentY, elementWidth, newsHeight);
+        ctx.fillText("MAIN NEWS SECTION", canvas.width / 2, currentY + newsHeight / 2);
+        currentY += newsHeight + padding;
+
+        // Draw Forex Chart
+        const chartHeight = 150;
+        ctx.strokeRect(padding, currentY, elementWidth, chartHeight);
+        ctx.fillText("FOREX CHART", canvas.width / 2, currentY + chartHeight / 2);
+        currentY += chartHeight + padding;
+
+        // Draw Newsletter Form
+        const newsletterHeight = 80;
+        ctx.strokeRect(padding, currentY, elementWidth, newsletterHeight);
+        ctx.fillText("NEWSLETTER FORM", canvas.width / 2, currentY + newsletterHeight / 2);
+        currentY += newsletterHeight + padding;
+
+        // Draw Lead Report Form
+        const leadReportHeight = 80;
+        ctx.strokeRect(padding, currentY, elementWidth, leadReportHeight);
+        ctx.fillText("LEAD REPORT FORM", canvas.width / 2, currentY + leadReportHeight / 2);
+        currentY += leadReportHeight + padding;
+
+        // Draw Footer
+        const footerHeight = 40;
+        ctx.strokeRect(padding, currentY, elementWidth, footerHeight);
+        ctx.fillText("FOOTER", canvas.width / 2, currentY + footerHeight / 2);
+    </script>
+</body>
+</html>
